@@ -13,19 +13,23 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div class="container">
       {template && <Meme template={template} />}
-      {!template &&
-        templates.map(template => {
-          return (
-            <Meme
-              template={template}
-              onClick={() => {
-                setTemplate(template);
-              }}
-            />
-          );
-        })}
+      {!template && (
+        <>
+          <h1>Choose a Meme Template</h1>
+          {templates.map(template => {
+            return (
+              <Meme
+                template={template}
+                onClick={() => {
+                  setTemplate(template);
+                }}
+              />
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }
