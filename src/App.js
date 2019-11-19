@@ -10,7 +10,13 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div>{
+      templates.map(template => {
+        return (
+          <img key={template.id} src={template.url} alt={template.name} />
+        )
+      })
+    }
     </div>
   );
 }
