@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Meme } from "./components/Meme";
 
+const objectToQueryParam = (obj) => {
+  const params = Object.entries(obj).map(([key, value]) => `${key}=${value}`);
+  return '?' + params.join('&');
+};
+
 function App() {
   const [templates, setTemplates] = useState([]);
   const [template, setTemplate] = useState(null);
@@ -15,11 +20,25 @@ function App() {
   }, []);
 
   return (
-    <div class="container">
+    <div className="container">
       {template && (
         <form
-          onSubmit={e => {
+          onSubmit={async e => {
             e.preventDefault();
+
+            const params = {
+              template_id: template.id,
+              text0: topText,
+              text1: bottomText,
+              username: "REACT_APP_IMGFLIP_USERNAME",
+              password: "REACT_APP_IMGFLIP_PASSWORD"
+            };
+            const response = await fetch(
+              `https://api.imgflip.com/caption_image${objectToQueryParam(params)}`,
+              {}
+            );
+            const data = await response.json();
+            console.log(data);
           }}
         >
           <Meme template={template} />
