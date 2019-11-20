@@ -1,5 +1,5 @@
 body {
-  background-color: #d1ffd6;
+  background-color: #deffdf;
 }
 
 .container {
@@ -24,6 +24,10 @@ img {
   padding: 30px;
 }
 
+img:hover {
+		cursor: pointer;
+	}
+
 input {
   justify-content: center;
   padding: 6px;
@@ -32,6 +36,10 @@ input {
 .submit-meme {
   padding: 6px;
 }
+
+.submit-meme:hover {
+		cursor: pointer;
+	}
 
 .custom-meme {
   display:flex;
