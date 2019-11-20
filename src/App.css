@@ -9,6 +9,14 @@ h1 {
 img {
   height: 400px;
   width: 400px;
-  object-fit: cover;
+  object-fit: contain;
   padding: 30px;
+}
+
+form {
+}
+
+.custom-meme {
+  display:flex;
+  justify-content: center;
 }

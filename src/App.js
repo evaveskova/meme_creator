@@ -12,13 +12,20 @@ function App() {
   const [template, setTemplate] = useState(null);
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
+  const [meme, setMeme] = useState(null);
 
   useEffect(() => {
-    fetch("https://api.imgflip.com/get_memes").then(x =>
+    fetch("https://cors-anywhere.herokuapp.com/http://api.imgflip.com/get_memes").then(x =>
       x.json().then(response => setTemplates(response.data.memes))
     );
   }, []);
 
+  if (meme) {
+    return (<div className="custom-meme">
+      <img src={meme} alt="Your Custom Meme" style={{width:800, height:800}}/>
+    </div>
+  );
+  }
   return (
     <div className="container">
       {template && (
@@ -30,15 +37,15 @@ function App() {
               template_id: template.id,
               text0: topText,
               text1: bottomText,
-              username: "REACT_APP_IMGFLIP_USERNAME",
-              password: "REACT_APP_IMGFLIP_PASSWORD"
+              username: process.env.REACT_APP_IMGFLIP_USERNAME,
+              password: process.env.REACT_APP_IMGFLIP_PASSWORD
             };
             const response = await fetch(
-              `https://api.imgflip.com/caption_image${objectToQueryParam(params)}`,
+              `https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image${objectToQueryParam(params)}`,
               {}
             );
-            const data = await response.json();
-            console.log(data);
+            const json = await response.json();
+            setMeme(json.data.url)
           }}
         >
           <Meme template={template} />
