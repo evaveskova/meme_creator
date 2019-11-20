@@ -48,23 +48,30 @@ function App() {
             setMeme(json.data.url)
           }}
         >
+        <div className="header">
+        <h2>Customize Your Meme</h2>
+        </div>
           <Meme template={template} />
+          <div className="form-input">
           <input
-            placeholder="Top Text"
+            placeholder="First Text"
             value={topText}
             onChange={e => setTopText(e.target.value)}
           />
           <input
-            placeholder="Bottom Text"
+            placeholder="Second Text"
             value={bottomText}
             onChange={e => setBottomText(e.target.value)}
           />
-          <button type="submit">Create Meme</button>
+          <button className="submit-meme" type="submit">Create Meme</button>
+          </div>
         </form>
       )}
       {!template && (
         <>
+        <div className="header">
           <h1>Choose a Meme Template</h1>
+          </div>
           {templates.map(template => {
             return (
               <Meme

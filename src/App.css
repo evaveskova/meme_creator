@@ -1,9 +1,20 @@
+body {
+  background-color: #d1ffd6;
+}
+
 .container {
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 60px;
+.header {
+  border-bottom: 2px groove #bfbfbf;
+  margin-bottom: 30px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+h2 {
+  padding-top: 30px;
 }
 
 img {
@@ -13,7 +24,13 @@ img {
   padding: 30px;
 }
 
-form {
+input {
+  justify-content: center;
+  padding: 6px;
+}
+
+.submit-meme {
+  padding: 6px;
 }
 
 .custom-meme {
