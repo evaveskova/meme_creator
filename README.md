@@ -1,6 +1,9 @@
 # Meme Creator
 
 This app displays meme templates from [Imgflip](https://api.imgflip.com/). Users can select a template, add text on top of the template, and save their custom meme.
+
+Click [here](https://evaveskova.github.io/meme_creator/) to access to live site.
+
 ## Setup
 
 * Install node modules:
